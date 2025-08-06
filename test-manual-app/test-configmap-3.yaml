@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-configmap-3
+  namespace: test-manual-app
+data:
+  server_info: "This is a test server."
