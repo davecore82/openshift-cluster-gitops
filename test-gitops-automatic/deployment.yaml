@@ -20,3 +20,9 @@ spec:
         image: nginx:1.14.2
         ports:
         - containerPort: 80
+        volumeMounts: # Add this section
+        - name: nginx-cache
+          mountPath: /var/cache/nginx
+      volumes: # Add this section
+      - name: nginx-cache
+        emptyDir: {}
