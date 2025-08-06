@@ -1,3 +1,4 @@
+# File: test-gitops-automatic/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,10 +20,10 @@ spec:
       - name: nginx
         image: nginx:1.14.2
         ports:
-        - containerPort: 80
-        volumeMounts: # Add this section
+        - containerPort: 8080 # <-- Changed from 80 to 8080
+        volumeMounts:
         - name: nginx-cache
           mountPath: /var/cache/nginx
-      volumes: # Add this section
+      volumes:
       - name: nginx-cache
         emptyDir: {}

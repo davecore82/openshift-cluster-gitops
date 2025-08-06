@@ -1,3 +1,4 @@
+# File: test-gitops-automatic/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -8,6 +9,6 @@ spec:
     app: nginx
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 80 # <-- The service will still be accessed on port 80
+      targetPort: 8080 # <-- The service will now forward traffic to port 8080 on the pods
   type: ClusterIP
