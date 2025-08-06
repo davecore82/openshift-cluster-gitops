@@ -2,28 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: apache-deployment
   labels:
-    app: nginx
+    app: apache
   namespace: test-gitops-automatic
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nginx
+      app: apache
   template:
     metadata:
       labels:
-        app: nginx
+        app: apache
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
+      - name: apache
+        image: registry.access.redhat.com/ubi8/httpd-24
         ports:
-        - containerPort: 8080 # <-- Changed from 80 to 8080
-        volumeMounts:
-        - name: nginx-cache
-          mountPath: /var/cache/nginx
-      volumes:
-      - name: nginx-cache
-        emptyDir: {}
+        - containerPort: 8080
