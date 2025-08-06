@@ -3,17 +3,15 @@ kind: Application
 metadata:
   name: test-gitops-automatic
   namespace: cluster-gitops
-  annotations:
-    argocd.argoproj.io/sync-wave: "10" # Use a higher sync-wave to ensure it's created after the core GitOps components
 spec:
-  project: cluster
+  project: default
   source:
     repoURL: https://github.com/davecore82/openshift-cluster-gitops.git
     targetRevision: main
-    path: namespaces/test-gitops-automatic
+    path: test-gitops-automatic
   destination:
     server: https://kubernetes.default.svc
-    namespace: 'test-gitops-automatic'
+    namespace: test-gitops-automatic
   syncPolicy:
     automated:
       prune: true
